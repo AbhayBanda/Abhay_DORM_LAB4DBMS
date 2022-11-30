@@ -5,52 +5,52 @@ use ecommerce_databse;
 
 CREATE TABLE IF NOT EXISTS SUPPLIER(
 	SUPP_ID INT PRIMARY KEY,
-    SUPP_NAME VARCHAR(50),
-    SUPP_CITY VARCHAR(50),
-    SUPP_PHONE VARCHAR(20)
+	SUPP_NAME VARCHAR(50),
+	SUPP_CITY VARCHAR(50),
+	SUPP_PHONE VARCHAR(20)
 );
 
 CREATE TABLE IF NOT EXISTS CUSTOMER(
 	CUS_ID INT PRIMARY KEY,
-    CUS_NAME VARCHAR(20) NOT NULL,
+	CUS_NAME VARCHAR(20) NOT NULL,
 	CUS_PHONE VARCHAR(10) NOT NULL,
-    CUS_CITY VARCHAR(30),
-    CUS_GENDER char
+	CUS_CITY VARCHAR(30),
+	CUS_GENDER char
 );
 
 CREATE TABLE IF NOT EXISTS CATEGORY(
 	CAT_ID INT PRIMARY KEY,
-    CAT_NAME VARCHAR(20) NOT NULL
+	CAT_NAME VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS PRODUCT(
 	PRO_ID INT PRIMARY KEY,
-    PRO_NAME VARCHAR(20) NOT NULL default "Dummy",
-    PRO_DESC VARCHAR(60),
-    CAT_ID INT,
-    FOREIGN KEY (CAT_ID) REFERENCES CATEGORY(CAT_ID)
+	PRO_NAME VARCHAR(20) NOT NULL default "Dummy",
+	PRO_DESC VARCHAR(60),
+	CAT_ID INT,
+	FOREIGN KEY (CAT_ID) REFERENCES CATEGORY(CAT_ID)
 );
 
 CREATE TABLE IF NOT EXISTS SUPPLIER_PRICING (
 	PRICING_ID INT PRIMARY KEY,
-    PRO_ID INT, FOREIGN KEY (PRO_ID) REFERENCES PRODUCT(PRO_ID),
+	PRO_ID INT, FOREIGN KEY (PRO_ID) REFERENCES PRODUCT(PRO_ID),
 	SUPP_ID INT, FOREIGN KEY (SUPP_ID) REFERENCES SUPPLIER(SUPP_ID),
-    SUPP_PRICE INT DEFAULT 0
+	SUPP_PRICE INT DEFAULT 0
 );
 
 
 CREATE TABLE IF NOT EXISTS ORDERS(
 	ORD_ID INT PRIMARY KEY,
-    ORD_AMOUNT INT NOT NULL,
-    ORD_DATE DATE NOT NULL,
-    CUS_ID INT, FOREIGN KEY (CUS_ID) REFERENCES CUSTOMER(CUS_ID),
-    PRICING_ID INT, FOREIGN KEY (PRICING_ID) REFERENCES SUPPLIER_PRICING(PRICING_ID)
+	ORD_AMOUNT INT NOT NULL,
+	ORD_DATE DATE NOT NULL,
+	CUS_ID INT, FOREIGN KEY (CUS_ID) REFERENCES CUSTOMER(CUS_ID),
+	PRICING_ID INT, FOREIGN KEY (PRICING_ID) REFERENCES SUPPLIER_PRICING(PRICING_ID)
 );
 
 CREATE TABLE IF NOT EXISTS RATINGS (
 	RAT_ID INT PRIMARY KEY,
 	ORD_ID INT, FOREIGN KEY (ORD_ID) REFERENCES ORDERS(ORD_ID),
-    RAT_RATSTARS INT NOT NULL
+	RAT_RATSTARS INT NOT NULL
 );
 
 -- 2 INSERT DATA INTO GIVEN TABLES
@@ -70,7 +70,7 @@ VALUES
 	(2, "AMAN", "9785463215", "NOIDA", "M"),
 	(3, "NEHA", "9999999999", "MUMBAI", "F"),
 	(4, "MEGHA", "9994562399", "KOLKATA", "F"),
-	(5,	"PULKIT", "7895999999", "LUCKNOW", "M");
+	(5, "PULKIT", "7895999999", "LUCKNOW", "M");
 
 INSERT INTO 
 	CATEGORY(CAT_ID,CAT_NAME)
@@ -115,7 +115,7 @@ VALUES
 	(12, 7, 4, 529),
 	(13, 6, 2, 105),
 	(14, 6, 1, 99),
-    (15, 5, 5, 2999),
+    	(15, 5, 5, 2999),
 	(16, 5, 2, 2999);
     
     
@@ -127,38 +127,38 @@ VALUES
 	(103, 30000, "2021-09-16", 5, 2),
 	(104, 1500, "2021-10-05", 1, 1),
 	(105, 3000, "2021-08-16", 4, 3),
-    (106, 1450, "2021-08-18", 1, 9),
-    (107, 789, "2021-09-01", 3, 7),
-    (108, 780, "2021-09-07", 5, 6),
-    (109, 3000, "2021-00-10", 5, 3),
-    (110, 2500, "2021-09-10", 2, 4),
-    (111, 1000, "2021-09-15", 4, 5),
-    (112, 789, "2021-09-16", 4, 7),
-    (113, 31000, "2021-09-16", 1, 8),
-    (114, 1000, "2021-09-16", 3, 5),
-    (115, 3000, "2021-09-16", 5, 3),
-    (116, 99, "2021-09-17", 2, 14);
+	(106, 1450, "2021-08-18", 1, 9),
+	(107, 789, "2021-09-01", 3, 7),
+	(108, 780, "2021-09-07", 5, 6),
+	(109, 3000, "2021-00-10", 5, 3),
+	(110, 2500, "2021-09-10", 2, 4),
+	(111, 1000, "2021-09-15", 4, 5),
+	(112, 789, "2021-09-16", 4, 7),
+	(113, 31000, "2021-09-16", 1, 8),
+	(114, 1000, "2021-09-16", 3, 5),
+	(115, 3000, "2021-09-16", 5, 3),
+	(116, 99, "2021-09-17", 2, 14);
     
     
 INSERT INTO 
 	RATINGS
 VALUES 
 	(1, 101, 4),
-	(2,	102, 3),
-	(3,	103, 1),
-	(4,	104, 2),
-	(5,	105, 4),
-    (6,	106, 3),
-    (7,	107, 4),
-    (8,	108, 4),
-    (9,	109, 3),
-    (10, 110, 5),
-    (11, 111, 3),
-    (12, 112, 4),
-    (13, 113, 2),
-    (14, 114, 1),
-    (15, 115, 1),
-    (16, 116, 0);
+	(2, 102, 3),
+	(3, 103, 1),
+	(4, 104, 2),
+	(5, 105, 4),
+	(6, 106, 3),
+	(7, 107, 4),
+	(8, 108, 4),
+	(9, 109, 3),
+	(10, 110, 5),
+	(11, 111, 3),
+	(12, 112, 4),
+	(13, 113, 2),
+	(14, 114, 1),
+	(15, 115, 1),
+	(16, 116, 0);
     
     
     
@@ -169,7 +169,7 @@ from
 	(
 		select 
 			cus_id, cus_gender, ord_amount 
-        from 
+		from 
 			(
 				select 
 					c.cus_id, c.cus_name, c.cus_gender, o.ord_amount, o.pricing_id
@@ -182,11 +182,11 @@ from
 				where
 					ord_amount >= 3000
 			) 
-			as 
-				t1 
-			group by 
-             cus_id
-		) 
+		as 
+			t1 
+		group by 
+			cus_id
+	) 
 as 
 	t2 
 group by 
@@ -199,11 +199,11 @@ group by
 -- 5 Display the Supplier details who can supply more than one product
 select 
 	supplier.supp_id, 
-    supplier.supp_name, 
-    supplier.supp_city,
-    supplier.supp_phone,
-    supplier_pricing.pro_id,
-    count(supplier_pricing.pro_id) as "no of products supplied" 
+	supplier.supp_name, 
+	supplier.supp_city,
+	supplier.supp_phone,
+	supplier_pricing.pro_id,
+	count(supplier_pricing.pro_id) as "no of products supplied" 
 from 
 	supplier 
 join 
@@ -217,6 +217,7 @@ having
 
 
 -- 6 Find the least expensive product from each category and print the table with category id, name, product name and price of the product
+
 select c.cat_id, c.cat_name, t1.pro_name, min(t1.supp_price) "least expensive cost", t1.supp_id
 from 
 	category c
